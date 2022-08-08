@@ -16,7 +16,7 @@ export function Task({
   handleMarkTaskAsDone,
 }: TaskProps) {
   return (
-    <div className="flex items-start justify-between">
+    <div className="p-4 flex items-start justify-between bg-gray-500 rounded-lg border border-gray-400 shadow">
       <div className="flex items-start gap-3">
         <input
           type="checkbox"

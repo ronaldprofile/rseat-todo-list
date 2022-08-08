@@ -129,9 +129,9 @@ export function App() {
                 </span>
               </div>
             ) : (
-              tasks.map((task) => {
-                return (
-                  <div className="mt-6">
+              <div className="mt-6 flex flex-col gap-3">
+                {tasks.map((task) => {
+                  return (
                     <Task
                       key={task.id}
                       id={task.id}
@@ -140,9 +140,9 @@ export function App() {
                       handleDeleteTask={handleDeleteTask}
                       handleMarkTaskAsDone={handleMarkTaskAsDone}
                     />
-                  </div>
-                );
-              })
+                  );
+                })}
+              </div>
             )}
           </section>
         </main>
