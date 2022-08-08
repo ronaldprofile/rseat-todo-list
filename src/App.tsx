@@ -66,6 +66,10 @@ export function App() {
     setTasks(tasksUpdated);
   }
 
+  useEffect(() => {
+    localStorage.setItem("@tasks-ignite", JSON.stringify(tasks));
+  }, [tasks]);
+
   return (
     <div className="h-scree">
       <header className="min-h-[200px] bg-gray-700 flex items-center justify-center">
