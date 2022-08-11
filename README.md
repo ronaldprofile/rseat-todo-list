@@ -1,6 +1,7 @@
 ## Projeto
 
-![screenshot-rocks](https://user-images.githubusercontent.com/81709922/183501385-847f04f7-6c32-4008-8a69-0915aee28d83.png)
+![screenshot-rocks](https://user-images.githubusercontent.com/81709922/184126461-ee65effa-4d6f-4563-9003-4aab97c19a52.png)
+
 
 Este é um desafio do Ignite da @Rocketseat. Nele foi aplicado alguns dos conceitos ensinado durante o primeiro módulo da nova 
 trilha do React JS atualizada.
@@ -27,6 +28,8 @@ Apesar de serem poucas funcionalidades, você vai precisar relembrar conceitos c
 - React JS
 - Typescript
 - Tailwind CSS
+- Radix UI
+- Stitches JS
 
 ## Uso
 
