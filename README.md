@@ -1,5 +1,7 @@
 ## Projeto
 
+![screenshot-rocks](https://user-images.githubusercontent.com/81709922/183501385-847f04f7-6c32-4008-8a69-0915aee28d83.png)
+
 Este é um desafio do Ignite da @Rocketseat. Nele foi aplicado alguns dos conceitos ensinado durante o primeiro módulo da nova 
 trilha do React JS atualizada.
 
