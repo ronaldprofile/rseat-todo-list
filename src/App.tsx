@@ -49,7 +49,7 @@ export function App() {
   }
 
   function handleAddNewTask(newTask: Task) {
-    setTasks((state) => [...state, newTask]);
+    setTasks((state) => [newTask, ...state]);
   }
 
   function handleDeleteTask(taskId: string) {
