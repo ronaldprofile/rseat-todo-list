@@ -1,11 +1,15 @@
 import { FormEvent, useEffect, useState } from "react";
-import { PlusCircle } from "phosphor-react";
+import { PlusCircle, X } from "phosphor-react";
 import { Clipboard } from "./components/Clipboard";
 import { Input } from "./components/Input";
 import { Logo } from "./components/Logo";
-
-import { v4 as useId } from "uuid";
+import {
+  Toast,
+  ToastTitle,
+  ToastButtonClose,
+} from "./components/Toast";
 import { Task } from "./components/Task";
+import { v4 as useId } from "uuid";
 
 interface Task {
   id: string;
@@ -14,7 +18,10 @@ interface Task {
   created_at: Date;
 }
 
+type ActionsType = "add-task" | "invalid-form" | "remove-task";
+
 export function App() {
+  const [isToastOpen, setIsToastOpen] = useState(false);
   const [tasks, setTasks] = useState<Task[]>(() => {
     const tasksStorage = localStorage.getItem("@tasks-ignite");
 
@@ -25,6 +32,8 @@ export function App() {
     return [];
   });
 
+  const [actionType, setActionType] = useState<ActionsType | null>(null);
+
   const [taskName, setTaskName] = useState("");
 
   const tasksMarkedAsDone = tasks.filter((task) => task.done === true);
@@ -34,7 +43,8 @@ export function App() {
     event.preventDefault();
 
     if (!taskName.trim()) {
-      alert("preencha o campo");
+      setIsToastOpen(true);
+      setActionType("invalid-form");
       return;
     }
 
@@ -46,16 +56,22 @@ export function App() {
     });
 
     setTaskName("");
+    setActionType("add-task");
+    setIsToastOpen(true);
   }
 
   function handleAddNewTask(newTask: Task) {
     setTasks((state) => [newTask, ...state]);
+    setActionType("add-task");
+    setIsToastOpen(true);
   }
 
   function handleDeleteTask(taskId: string) {
     const tasksFiltered = tasks.filter((task) => task.id !== taskId);
 
     setTasks(tasksFiltered);
+    setActionType("remove-task");
+    setIsToastOpen(true);
   }
 
   function handleMarkTaskAsDone(taskId: string) {
@@ -151,6 +167,22 @@ export function App() {
           </section>
         </main>
       </div>
+
+      <Toast
+        open={isToastOpen}
+        onOpenChange={() => setIsToastOpen(!open)}
+        duration={2500}
+      >
+        <ToastTitle>
+          {actionType === "invalid-form" && "Preencha o formulário"}
+          {actionType === "add-task" && "tarefa adicionada"}
+          {actionType === "remove-task" && "tarefa deletada"}
+        </ToastTitle>
+
+        <ToastButtonClose title="fechar toast">
+          <X />
+        </ToastButtonClose>
+      </Toast>
     </div>
   );
 }
